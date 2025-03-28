@@ -1,0 +1,17 @@
+server:
+  port: 8888
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tax_db
+    password: ses_portal
+    username: ses_portal
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  liquibase:
+    change-log: classpath:/db/changelog-master.yaml
+    enabled: true
