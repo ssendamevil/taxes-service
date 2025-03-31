@@ -1,6 +1,6 @@
 package com.enu.taxes_service.domain.model;
 
-import com.enu.taxes_service.domain.TaxType;
+import com.enu.taxes_service.domain.PropertyType;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
+import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 
 @Entity
@@ -16,8 +16,8 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "taxes")
-public class Tax {
+@Table(name = "properties")
+public class Property {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,21 +28,13 @@ public class Tax {
     private User user;
 
     @Column(nullable = false)
-    private Double amount;
+    private Double price;
 
-    @Column(name = "income_id")
-    private Long incomeId;
-
-    @Column(name = "property_id")
-    private Long propertyId;
-
-    @Column(nullable = false)
     private String description;
 
-    @Column(nullable = false)
     private LocalDateTime date;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private TaxType type;
+    private PropertyType type;
 }

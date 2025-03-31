@@ -1,6 +1,7 @@
 package com.enu.taxes_service.controller;
 
 import com.enu.taxes_service.domain.dto.UserCreate;
+import com.enu.taxes_service.domain.dto.UserDto;
 import com.enu.taxes_service.domain.dto.UserLogin;
 import com.enu.taxes_service.domain.model.User;
 import com.enu.taxes_service.service.UserService;
@@ -22,7 +23,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public User login(@RequestBody UserLogin user) {
+    public UserDto login(@RequestBody UserLogin user) {
         return userService.login(user);
     }
 

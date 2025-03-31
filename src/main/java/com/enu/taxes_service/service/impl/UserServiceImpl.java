@@ -1,6 +1,7 @@
 package com.enu.taxes_service.service.impl;
 
 import com.enu.taxes_service.domain.dto.UserCreate;
+import com.enu.taxes_service.domain.dto.UserDto;
 import com.enu.taxes_service.domain.dto.UserLogin;
 import com.enu.taxes_service.domain.model.User;
 import com.enu.taxes_service.mapper.UserMapper;
@@ -32,7 +33,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User login(UserLogin userLogin) {
+    public UserDto login(UserLogin userLogin) {
         User user = userRepository.findByUsername(userLogin.getUsername());
         if (user == null) {
             throw new RuntimeException("User not found");
@@ -40,6 +41,6 @@ public class UserServiceImpl implements UserService {
         if (!passwordEncoder.matches(userLogin.getPassword(), user.getPassword())) {
             throw new RuntimeException("Wrong password");
         }
-        return user;
+        return UserMapper.INSTANCE.toDto(user);
     }
 }

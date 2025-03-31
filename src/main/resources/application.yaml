@@ -2,9 +2,9 @@ server:
   port: 8888
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/tax_db
-    password: ses_portal
-    username: ses_portal
+    url: jdbc:postgresql://localhost:5433/tax_db
+    password: admin
+    username: admin
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:

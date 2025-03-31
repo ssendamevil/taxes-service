@@ -11,6 +11,8 @@ import com.enu.taxes_service.service.IncomeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 @RequiredArgsConstructor
@@ -27,5 +29,12 @@ public class IncomeServiceImpl implements IncomeService {
         }
         income.setUser(user);
         return IncomeMapper.INSTANCE.toView(incomeRepository.save(income));
+    }
+
+    @Override
+    public List<IncomeView> getAllByUsername(String username) {
+        Long userId = userRepository.findByUsername(username).getId();
+        List<Income> income = incomeRepository.findIncomesByUserId(userId);
+        return income.stream().map(IncomeMapper.INSTANCE::toView).toList();
     }
 }

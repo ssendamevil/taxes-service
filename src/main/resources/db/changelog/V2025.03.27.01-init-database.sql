@@ -20,12 +20,24 @@ create table incomes (
     constraint fk_incomes_user foreign key (user_id) references users(id) on delete cascade
 );
 
+create table properties (
+     id bigserial primary key,
+     user_id bigint not null,
+     type varchar(255) not null,
+     price decimal not null,
+     description varchar(255),
+     date timestamp,
+     constraint fk_properties_user foreign key (user_id) references users(id) on delete cascade
+);
+
 create table taxes (
     id bigserial primary key,
     user_id bigint not null,
-    income_id bigint not null,
+    income_id bigint,
+    property_id bigint,
     amount decimal not null,
     description varchar(255) not null,
+    type varchar(255) not null,
     date timestamp not null,
     constraint fk_taxes_user foreign key (user_id) references users(id) on delete cascade
 );

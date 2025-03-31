@@ -32,6 +32,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/**").permitAll()
                         .requestMatchers("/api/taxes/**").permitAll()
                         .requestMatchers("/admin/**").permitAll()
+                        .requestMatchers("/api/property/**").permitAll()
                 )
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
                 .build();
