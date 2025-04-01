@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
-
+    //  Функция для создание пользователя
     @PostMapping("/register")
     public Long register(@RequestBody UserCreate user) {
         return userService.create(user).getId();
     }
-
+    //  Функция для логина
     @PostMapping("/login")
     public UserDto login(@RequestBody UserLogin user) {
         return userService.login(user);

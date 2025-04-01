@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/taxes")
@@ -18,11 +17,12 @@ import java.util.Objects;
 public class TaxController {
     private final TaxService taxService;
 
+//    Эндпоинт для расчета налогов
     @GetMapping("/calculate/{username}")
     public List<TaxView> calculateTax(@PathVariable String username) {
         return taxService.calculateTaxes(username);
     }
-
+//  Эндпоинт для получение всех налогов по фильтру
     @GetMapping("/{username}")
     public List<TaxView> getTaxes(@PathVariable String username,
                                   @RequestParam(required = false)TaxType type,

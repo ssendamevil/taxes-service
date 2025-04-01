@@ -17,6 +17,7 @@ public class ExportController {
     private final TaxExportService exportService;
     private final TaxService taxService;
 
+    // Функция для получение
     @GetMapping("/pdf/{username}")
     public ResponseEntity<byte[]> exportPdf(@PathVariable String username) {
         byte[] pdf = exportService.generatePdf(taxService.calculateTaxes(username));

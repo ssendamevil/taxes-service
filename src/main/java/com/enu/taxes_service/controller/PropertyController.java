@@ -16,12 +16,15 @@ import java.util.List;
 @RequestMapping("/api/property")
 public class PropertyController {
     private final PropertyService propertyService;
+
+    //Эндпоинт для добавления имущества
     @PostMapping("/{username}")
     public PropertyView createProperty(@RequestBody PropertyDto propertyDto,
                                        @PathVariable String username){
         return propertyService.create(username, propertyDto);
     }
 
+    //Ендпоинт для получения всех имуществ по фильтру
     @GetMapping("/{username}")
     public List<PropertyView> getAllProperties(@PathVariable String username,
                                                @RequestParam(required = false)PropertyType type,
